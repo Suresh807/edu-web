@@ -16,7 +16,7 @@ app.use(bodyparser.urlencoded({
   extended: true
 }))
 
-mongoose.connect("mongodb://localhost:27017/Education", {
+mongoose.connect("mongodb+srv://sureshkumar543514:5SR4cYR44m6gy7q5@cluster0.kzdm4dn.mongodb.net/webv", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

@@ -42,53 +42,53 @@ const esignSchema = new mongoose.Schema({
 res.render("login");
   });
 
-  app.post('/login', (req, res) => {
-    var a = req.body.name;
-    var b = req.body.pass;
-    // console.log(a);
-    // console.log(b);
-   
-    Sign.find()
-      .then((signss) => {
-  
-        signss.forEach(function (person) {
-     
-          if (person.name === a && person.pass === b) {
-            console.log("matches");
-            res.render('index',{
-              score:score
-            })
-          }
-  
-        })
-      })
-  
-      .catch((err) => {
+  app.post('/login', async (req, res) => {
+    try {
+        const a = req.body.name;
+        const b = req.body.pass;
+
+        const signss = await Sign.find();
+
+        for (const person of signss) {
+            if (person.name === a && person.pass === b) {
+                console.log("matches");
+                res.render('index', {
+                    score: score
+                });
+                return; // Exit the loop if a match is found
+            }
+        }
+
+        // If no match is found
+        console.log("No matches found");
+        // Handle response or rendering for no matches
+
+    } catch (err) {
         console.log(err);
-  
-      });
-  
-  });
+        // Handle error response
+    }
+});
 
 
-  app.post('/signup', (req, res) => {
-    const signn = new Sign({
-      name: req.body.name,
-      school_name: req.body.school_name,
-      school_id: req.body.school_id,
-      pass:req.body.pass
-    });
-    Sign.insertMany([signn])
-      .then(function () {
-        console.log("Successfully saved defult items to DB");
-      })
-      .catch(function (err) {
-        console.log(err);
+
+app.post('/signup', async (req, res) => {
+  try {
+      const signn = new Sign({
+          name: req.body.name,
+          school_name: req.body.school_name,
+          school_id: req.body.school_id,
+          pass: req.body.pass
       });
-    res.redirect('/')
-    
-  
-  });
+
+      await Sign.insertMany([signn]);
+      console.log("Successfully saved default items to DB");
+      res.redirect('/');
+  } catch (err) {
+      console.log(err);
+      res.status(500).send("An error occurred.");
+  }
+});
+
 
   app.post("/score",(req,res)=>{
     score=req.body.quitbutton;

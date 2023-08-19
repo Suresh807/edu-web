@@ -1,0 +1,81 @@
+<!-- 1. This is a timed code quiz cover 10 JavaScript principles. -->
+<!-- 2. On landing page display instructions for quiz. -->
+<!-- 3. When start quiz is pressed, the timer start to count down from 75 (or other random number) -->
+<!-- 4. If question is answered correctly, alert and proceed to next question -->
+<!-- 5. If question is answered incorrectly, alert, display correct answer, take 5 seconds off time and proceed to next question. -->
+<!-- 6. Multiple choice questions. -->
+<!-- 7. Use radio buttons for answer selection -->
+<!-- 8. Quiz is over when all questions answered correctly, all questions have been answered, right or wrong, or time runs out. -->
+<!-- 9. At end of quiz, record score and name of quiz-taker. -->
+<!-- 10. Add high-score function or scoring stats? -->
+<!-- 11. Have Start Quiz on navbar take you to a new page? -->
+<!-- 12. Add a button for begin or start over? -->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Link to favicon -->
+    <link rel="shortcut icon" href="./Assets/ampersand.png" />
+    <title>Code Quiz</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Link to style.css -->
+    <link rel="stylesheet" href="./Assets/style.css">
+    <!-- Link to fontawesome -->
+    <script src="https://kit.fontawesome.com/5892237bfb.js" crossorigin="anonymous"></script>
+    <!-- Link to Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <img class="ampersand" src="./Assets/ampersand.png" width="30" height="30" class="d-inline-block align-top"
+            alt="ampersand">
+        <a class="brand" class="navbar-brand">JavaScript Code Quiz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+
+    <script type="text/javascript">
+        // Collect the username
+        var startGame = confirm("Are you ready to start?");
+        var name = prompt("Enter your name.");
+
+        // Good luck user
+        alert("Good luck " + name + "!");
+    </script>
+
+    <!-- Directions -->
+    <div class="jumbotron">
+        <h1 class="display-4">Javascript Code Quiz</h1>
+        <p class="lead">Welcome to the Week 4 Javascript Code Quiz!</p>
+        <hr class="my-4">
+        <p>On the follwing pages you will be presented with 10 multiple-choice questions, testing your knowledge of
+            javaScript basics.
+            You will have 90 seconds to answer all 10 questions. If you answer any question incorrectly, 10 seconds will
+            be subtracted from your time and 1 point from your quiz total.
+            At the end of the quiz you will receive a score notification!
+            To get started simply click the Start Quiz button to begin the timer, and good luck!
+        </p>
+
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="./quiz.html" role="button"><i class="fas fa-stopwatch"></i> Start
+                Quiz</a>
+        </p>
+    </div>
+
+
+    <!-- Footer -->
+    
+
+    <script src="./Assets/app.js"></script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+        <h2><center>Hope Ambassadors</center></h2>
+		<center>
+        <div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en'},
+				'google_translate_element'
+			);
+		}
+	</script>
+
+	<script type="text/javascript"
+			src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+	</script>
+	</center>
+			<div class="signup">
+				<form action="/login" method="post">
+					<label for="chk" aria-hidden="true"> Sign In</label>
+					<input type="text" name="name" placeholder="User number" id="usernumber" required >
+                    <input type="password" name="pass" placeholder="Password" id="pass" required>
+					<button type="submit" onclick="SignIn()" id="btn1">Log-In </button>
+                    
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/signup" method="post">
+					<label for="chk" aria-hidden="true">Sign Up</label>
+                    
+					<input type="text" name="name" placeholder="Name" id="username" required>
+          			<input type="text" name="school_name" placeholder="School Name" id="username" required>
+					<input type="number" name="school_id" placeholder="School Id" id="usernumber"required >
+					<input type="password" name="pass" placeholder="Password" id="pass" required >
+					<button type="submit"  onclick="UserRegister()" id="btn">Sign Up </button>
+				</form>
+			</div>
+	</div>
+	
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="data.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="server.js"></script>
+</html>

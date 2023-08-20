@@ -71,24 +71,24 @@ res.render("login");
 
 
 
-app.post('/signup', async (req, res) => {
-  try {
-      const signn = new Sign({
-          name: req.body.name,
-          school_name: req.body.school_name,
-          school_id: req.body.school_id,
-          pass: req.body.pass
+  app.post('/signup', (req, res) => {
+    const signn = new Sign({
+      name: req.body.name,
+      school_name: req.body.school_name,
+      school_id: req.body.school_id,
+      pass:req.body.pass
+    });
+    Sign.insertMany([signn])
+      .then(function () {
+        console.log("Successfully saved defult items to DB");
+      })
+      .catch(function (err) {
+        console.log(err);
       });
-
-      await Sign.insertMany([signn]);
-      console.log("Successfully saved default items to DB");
-      res.redirect('/');
-  } catch (err) {
-      console.log(err);
-      res.status(500).send("An error occurred.");
-  }
-});
-
+    res.redirect('/')
+    
+  
+  });
 
   app.post("/score",(req,res)=>{
     score=req.body.quitbutton;

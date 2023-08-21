@@ -23,11 +23,19 @@ mongoose.connect("mongodb+srv://sureshkumar543514:5SR4cYR44m6gy7q5@cluster0.kzdm
 
 var db = mongoose.connection
 db.on('error', () => console.log('connection error'))
-db.once('open', () => {
+db.once('open', () => { 
   console.log("connected to db")
 })
 
+// const connectDB = async()=>{
+//   try{
+//     await mongoose.connect(process.env.MONGODB_CONNECT_URI)
+//     console.log("Connected to DB")
 
+//   } catch(error){
+//     console.log("connect failed "+  error)
+//   }
+// }
 const esignSchema = new mongoose.Schema({
     name:String,
     school_name:String,
@@ -71,24 +79,24 @@ res.render("login");
 
 
 
-app.post('/signup', async (req, res) => {
-  try {
-      const signn = new Sign({
-          name: req.body.name,
-          school_name: req.body.school_name,
-          school_id: req.body.school_id,
-          pass: req.body.pass
+  app.post('/signup', (req, res) => {
+    const signn = new Sign({
+      name: req.body.name,
+      school_name: req.body.school_name,
+      school_id: req.body.school_id,
+      pass:req.body.pass
+    });
+    Sign.insertMany([signn])
+      .then(function () {
+        console.log("Successfully saved defult items to DB");
+      })
+      .catch(function (err) {
+        console.log(err);
       });
-
-      await Sign.insertMany([signn]);
-      console.log("Successfully saved default items to DB");
-      res.redirect('/');
-  } catch (err) {
-      console.log(err);
-      res.status(500).send("An error occurred.");
-  }
-});
-
+    res.redirect('/')
+    
+  
+  });
 
   app.post("/score",(req,res)=>{
     score=req.body.quitbutton;
